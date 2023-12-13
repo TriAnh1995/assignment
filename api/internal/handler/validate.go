@@ -36,6 +36,13 @@ func (e FriendsList) validate() error {
 	}
 	return nil
 }
+func (b Block) validate() error {
+	emails := []string{b.Requester, b.Target}
+	if err := validateEmails(emails); err != nil {
+		return err
+	}
+	return nil
+}
 
 func validateEmail(email string) error {
 	// Check Email length
